@@ -1,0 +1,36 @@
+<div class="list">
+    
+    <div class="user_box">
+        
+<!--        //TOP PART OF THE BOX-->
+        
+        <div class="user_title">New Tasks</div>
+        <div class="user_info">Some more of that really important stuff</div>
+
+        <a class="button" id="AddButton" href="#/tasks">Go Back</a>
+        
+        
+        <div class="addTaskForm">
+            <div class="validbox">Task Name<br><input ng-model="taskname" placeholder="Task Name"></div>
+            <div class="validbox">Description<br><input ng-model="description" placeholder="Description"></div>
+            <div class="validbox">Deadline<br><input ng-model="deadline" placeholder="MM/DD/YYYY HH:MM AM/PM"></div>
+            <div class="validbox">Assigned User<br><input ng-model="username" placeholder="User Name"></div>
+            <button class="submitButton" ng-click="addNewTask()">Submit</button>
+        </div>
+        
+        <div ng-show="showNewTaskDetails">
+        
+            <h3>New Task Details</h3>
+            <h5>Task Name: <a href="#/tasks/{{nuID}}">{{nuTaskname}}</a></h5>
+            <h5>Task ID: {{nuID}}</h5>
+            <h5>Assigned User: <a href="#/users/{{nuUserID}}">{{nuUsername}}</a></h5>
+            <h5>Assigned UserID: {{nuUserID}}</h5>
+            <h5>Description: {{nuDescription}}</h5>
+            <h5>Deadline: {{nuDeadline}}</h5>
+            
+        </div>
+        
+        
+    </div>
+    
+</div>

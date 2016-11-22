@@ -1,0 +1,79 @@
+<div class="list">
+    
+    <div class="user_box">
+        
+<!--        //TOP PART OF THE BOX-->
+        
+        <div class="user_title">Tasks</div>
+        <div class="user_info">Really Important Stuff</div>
+        <a class="button" id="AddButton" href="#/addTask">Add Task</a>
+        <br>    
+        
+<!--        //MIDDLE OF THE BOX-->
+        
+        <div class="filter_box">
+            <form>
+                I would like to see<br>
+                <input ng-click="setAPC('a')" type="radio" name="apc" value="All">All, <br>
+                <input ng-click="setAPC('p')" type="radio" name="apc" value="Pending" >Pending,<br>
+                <input ng-click="setAPC('c')" type="radio" name="apc" value="Completed">Completed
+                tasks,
+            </form>
+        </div>    
+        
+        <div class="filter_box">
+           
+            <form>
+                in ____________ order,<br>
+                <input ng-click="setORDER('1')" type="radio" name="aOd" value="Ascending">Ascending <br>
+                <input ng-click="setORDER('-1')" type="radio" name="aOd" value="Descending" checked>Descending
+                
+            </form>
+            
+        </div>
+
+        <div class="filter_box">
+            
+            
+            <form>
+                sorted by:<br>
+                <input ng-click="setSORTBY('name')" type="radio" name="sortBy" value="Name of Task">Name of Task<br>
+                <input ng-click="setSORTBY('user')"type="radio" name="sortBy" value="Assigned User" >Assigned User<br>
+                <input ng-click="setSORTBY('date_created')"type="radio" name="sortBy" value="Date Created" checked>Date Created<br>
+                <input ng-click="setSORTBY('date_due')"type="radio" name="sortBy" value="Date Due" >Date Due
+            </form>    
+        </div>
+        
+        <div class="pagebar">
+            <button class="pageButton left" ng-click="previous()" ng-show="showPrevious">Previous Page</button>
+            <button class="pageButton right" ng-click="next()" ng-show="showNext">Next Page</button>
+        </div>
+        
+        <table>
+            <thead>
+                <th>Task Title</th>
+                <th>Date Created</th>
+                <th>Assigned User</th>
+                <th>Date to Complete</th>
+                <th>Delete this Task</th>
+            </thead>
+        
+            <tbody>
+                <tr ng-repeat="datas in data">
+                    <td><a href="#/tasks/{{datas._id}}">{{datas.name}}</a></td>
+                    <td>{{datas.dateCreated}}</td>
+                    <td>{{datas.assignedUserName}}</td>
+                    <td>{{datas.deadline}}</td>
+                    <td><button class="removeButton" ng-click="deleteTask(datas._id)">Delete Task </button></td>
+                
+                </tr>
+            </tbody>
+        </table>
+        
+        
+        
+        
+        
+    </div>
+
+</div>

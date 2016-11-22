@@ -1,0 +1,30 @@
+<div class="list">
+    
+    <div class="user_box">
+        <div class="user_title">New User</div>
+        <div class="user_info">this must be one cool person</div>
+
+        <a class="button" id="AddButton" href="#/users">Go Back</a>
+
+        <div class="addUserForm">
+            <div class="validbox" id="validname">
+                <input ng-model="name" placeholder="Name">*required <br>
+                {{validname}}
+            </div>
+            <div class="validbox" id="validemail">
+                <input ng-model="email" placeholder="Email">*required <br>
+                {{validemail}}
+            </div>
+            <a><button class="submitButton" ng-click="newUser()">Submit</button></a>
+        </div>
+        
+        <div ng-show="showNewUser">
+            <h3>New User Details</h3>
+            <h5>Name: <a href="#/users/{{nudID}}">{{nudName}}</a></h5>
+            <h5>Email: {{nudEmail}}</h5>
+            <h5>ID:{{nudID}}</h5>
+        </div>
+        
+        
+    </div>
+</div>

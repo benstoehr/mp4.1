@@ -1,0 +1,70 @@
+<div class="list">
+    
+    <div class="user_box">
+        
+<!--        //TOP PART OF THE BOX-->
+        <div class="ub_top">
+            <div class="user_title">Task Details</div>
+            <div class="user_info">this is legit, I promise.</div>
+        </div>
+        
+        <div class=taskDetails>
+            <h5 class="etText">Task Name: {{name}}</h5>
+            <button class="etButton" ng-click="editName()">Edit Name</button>
+            <div class="validbox" ng-show="showEditName">
+                <input ng-model="nuName" placeholder="New Name">
+                <button class="submitButton" ng-click="changeName()">Submit Edit</button>
+                <h4 ng-show="emptyName">CANNOT BE EMPTY</h4>
+            </div>
+        </div>
+        
+        <div class=taskDetails>
+            <h5 class="etText">Description: {{description}}</h5>
+            <button class="etButton" ng-click="editDescription()">Edit Description</button>
+            <div class="validbox" ng-show="showEditDescription">
+                <input ng-model="nuDescription" placeholder="New Description">
+                <button class="submitButton" ng-click="changeDescription()">Submit Edit</button>
+            </div>
+        </div>
+        
+        <div class=taskDetails>
+            <h5 class="etText">Assigned User: <a href="#/users/{{assignedUser}}">{{assignedUserName}}</a></h5>
+            <button class="etButton" ng-click="editUser()">Edit User</button>
+            <div class="validbox" ng-show="showEditUser">
+                <input ng-model="nuAssignedUserName" placeholder="New User">
+                <button class="submitButton" ng-click="changeUser()">Submit Edit</button>
+            </div>
+        </div>    
+        
+        <div class=taskDetails>
+            <h5 class="etText">Deadline: {{deadline}}</h5>
+            <button class="etButton" ng-click="editDeadline()">Edit Deadline</button>
+            <div class="validbox" ng-show="showEditDeadline">
+                <input ng-model="nuDeadline" placeholder="New Deadline">
+                <button class="submitButton" ng-click="changeDeadline()">Submit Edit</button>
+                <h4 ng-show="emptyDeadline">CANNOT BE EMPTY</h4>
+            </div>   
+        </div>    
+        
+        <div class=taskDetails>
+            <h5 class="etText">Completed: {{completed}}</h5>
+            <button class="etButton" ng-click="changeCompletion()">Change Completion Status</button>
+        </div>
+        
+        
+        <div ng-show="showEditTask">
+            <form>
+                <h3>New Task Details</h3>
+                
+                <div class="validbox"><input ng-model="nuDescription" placeholder="New Description"></div>
+                <div class="validbox"><input ng-model="nuAssignedUser" placeholder="New User"></div>
+                <div class="validbox"><input ng-model="nuDeadline" placeholder="New Deadline"></div>
+                <button class="submitButton" ng-click="changeTask()">Submit Changes</button>
+            </form>
+            
+        </div>
+        
+        
+    </div>
+    
+</div>

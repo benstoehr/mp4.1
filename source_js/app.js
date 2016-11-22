@@ -1,22 +1,37 @@
+//var http = require('http');
+
 var app = angular.module('mp4', ['ngRoute', 'mp4Controllers', 'mp4Services']);
+
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-    when('/firstview', {
-    templateUrl: 'partials/firstview.html',
-    controller: 'FirstController'
+    when('/users', {
+    templateUrl: 'partials/users.html',
+    controller: 'UserController'
   }).
-  when('/secondview', {
-    templateUrl: 'partials/secondview.html',
-    controller: 'SecondController'
+  when('/users/:id', {
+    templateUrl: 'partials/userDetail.html',
+    controller: 'userDetailController'
+  }).  
+  when('/addUser', {
+    templateUrl: 'partials/addUser.html',
+    controller: 'addUserController'
+  }).
+  when('/tasks', {
+    templateUrl: 'partials/tasks.html',
+    controller: 'TaskController'
+  }).
+  when('/tasks/:id', {
+    templateUrl: 'partials/taskDetail.html',
+    controller: 'taskDetailController'
+  }).
+  when('/addTask', {
+    templateUrl: 'partials/addTask.html',
+    controller: 'addTaskController'
   }).
   when('/settings', {
     templateUrl: 'partials/settings.html',
     controller: 'SettingsController'
-  }).
-  when('/llamalist', {
-    templateUrl: 'partials/llamalist.html',
-    controller: 'LlamaListController'
   }).
   otherwise({
     redirectTo: '/settings'

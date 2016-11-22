@@ -1,0 +1,32 @@
+<div class="list">
+    
+    <div class="user_box">
+        <div class="user_title">User Profile</div>
+        <div class="user_info">just like on Facebook, but better</div>
+
+        <div class="userDisplay">
+        
+            <h3>Pending Tasks for {{userName}} email: {{email}}</h3>  
+            <table>
+                <tr ng-repeat="task in pendingTasklist">
+                    <td><a href=#/tasks/{{task._id}}>{{task.name}}</a></td>
+                    <td>Deadline:{{task.deadline}}</td>
+                    <td>Assigned to: {{task.assignedUserName}}</td>
+                    <td><a href="#/users/{{userID}}"><button class="AddButton" ng-click="taskCompleted(task._id)">Completed</button></a></td>
+                </tr>    
+            </table>
+            
+            <button class="submitButton" ng-click="showCompletedTasks()">Show Completed Tasks</button>
+            
+            <table ng-show="showCompletedTasksVar">
+                <tr ng-repeat="task in completedTasklist">
+                    <td><a href=#/tasks/{{task._id}}>{{task.name}}</a></td>
+                    <td>Deadline:{{task.deadline}}</td>
+                    <td>Assigned to: {{task.assignedUserName}}</td>
+                    <td>Completed</td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</div>

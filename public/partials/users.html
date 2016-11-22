@@ -1,0 +1,27 @@
+<div class="list">
+    
+    <div class="user_box">
+        <div class="user_title">Users</div>
+        <div class="user_info">a list of cool people</div>
+
+        <a class="button" id="AddButton" href="#/addUser">Add User</a>
+        
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Email Address</th>
+                <th>Remove This User</th>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="datas in data | orderBy:'name'">
+                    <td><a href="#/users/{{datas._id}}">{{datas.name}}</a></td>
+                    <td>{{datas.email}}</td>
+                    <td><a href="#/users"><button class="removeButton" ng-click="removeUser(datas._id)">Remove User</button></a></td>
+                </tr>
+            </tbody>
+            
+        </table>     
+        
+    </div>
+</div>
