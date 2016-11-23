@@ -477,7 +477,9 @@ mp4Controllers.controller('taskDetailController', ['$scope', '$http', '$window' 
         $scope.emptyName = false;
         
         $scope.emptyDeadline = false;
-        
+            
+    
+    
         $scope.nuData = "";
             $scope.nuName = "";
             $scope.nuDescription = "";

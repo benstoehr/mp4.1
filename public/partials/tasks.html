@@ -52,8 +52,8 @@
         <table>
             <thead>
                 <th>Task Title</th>
-                <th>Date Created</th>
                 <th>Assigned User</th>
+                <th>Date Created</th>
                 <th>Date to Complete</th>
                 <th>Delete this Task</th>
             </thead>
@@ -61,8 +61,8 @@
             <tbody>
                 <tr ng-repeat="datas in data">
                     <td><a href="#/tasks/{{datas._id}}">{{datas.name}}</a></td>
-                    <td>{{datas.dateCreated}}</td>
                     <td>{{datas.assignedUserName}}</td>
+                    <td>{{datas.dateCreated}}</td>
                     <td>{{datas.deadline}}</td>
                     <td><button class="removeButton" ng-click="deleteTask(datas._id)">Delete Task </button></td>
                 
