@@ -166,35 +166,31 @@ mp4Services.factory('CommonData', ['$http', '$window', function($http, $window){
         },
              
         //  CALLBACK STORES PENDING TASKS IN SUPPLIED FIELD
-        getPendingTasksForUser : function(userName, callback){
+        getPendingTasksForUser : function(userID, callback){
             
             console.log("getPendingTasksForUser():: BEGIN");
             
             console.log("getPendingTasksForUser():: HTTP GET REQUEST");
             $http({
                 method:'GET',
-                url: $window.sessionStorage.baseurl+"/tasks?where={'completed':false,'assignedUserName':'"+userName+"'}",
+                url: $window.sessionStorage.baseurl+"/tasks?where={'completed':false,'assignedUser':'"+userID+"'}",
             }).then(
                 function successCB(response){
                     
                     console.log("getPendingTasksForUser():: HTTP SUCCESS");
                     
                     responseData = response.data;
-                    //console.log("getPendingTasksForUser():: responseData: ");
-                    //console.log(responseData);
+                    console.log("getPendingTasksForUser():: responseData: ");
+                    console.log(responseData);
                     
                     nuData = responseData.data;
-                    //console.log("getPendingTasksForUser():: nuData: ");
-                    //console.log(nuData);
+                    console.log("getPendingTasksForUser():: nuData: ");
+                    console.log(nuData);
                     
                     callback(nuData);
                 },
                 function errorCB(response){
                     console.log("getPendingTasksForUser():: HTTP FAILURE: Failed to retrieve tasklist.");
-                    nuData = response.data;
-                    //console.log(nuData);
-                    // NUDATA IS THE ARRAY OF OBJECTS
-                    callback(nuData);
                 })
         },
       

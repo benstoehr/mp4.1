@@ -18,20 +18,24 @@ mp4Controllers.controller('UserController', ['$scope', 'CommonData',  '$http', '
         $scope.id = data._id;
    });
 
+    $scope.tasklist = "";
    $scope.removeUser = function(userID){
-        
-        var tasklist = "";
-        
+
         CommonData.getPendingTasksForUser(userID,function(data){
             
-            tasklist = data;
+            $scope.tasklist = data;
             
-            for(i = 0; i < tasklist.length; i++){
-                CommonData.unassignTask(tasklist[i]._id);
+            console.log("removeUser():: $scope.tasklist:");
+            console.log($scope.tasklist);
+            
+            for(i = 0; i < $scope.tasklist.length; i++){
+                CommonData.unassignTask($scope.tasklist[i]._id);
             }
+            
+            CommonData.removeSingleUser(userID);
         })
         
-        CommonData.removeSingleUser(userID);
+        
         
        $scope.refresh();
     };
@@ -161,7 +165,7 @@ mp4Controllers.controller('userDetailController', ['$scope', '$http', 'CommonDat
         console.log("$scope.getTasks()");
         
     // GET TASKS BY QUERYING THE 'assignedUserName'
-        CommonData.getPendingTasksForUser($scope.userName,function(data){
+        CommonData.getPendingTasksForUser($scope.userID,function(data){
             $scope.pendingTasklist = data;
             //console.log("$scope.getTasks()::$scope.pendingTasklist");
             //console.log($scope.pendingTasklist);
@@ -520,6 +524,9 @@ mp4Controllers.controller('taskDetailController', ['$scope', '$http', '$window' 
                 })
         }
         $scope.changeDeadline = function(){
+            if($scope.nuDeadline === ""){
+                $scope.emptyDeadline = true;
+            }
             $scope.data.deadline = $scope.nuDeadline;
             $http({
                 method:'PUT',
@@ -566,6 +573,10 @@ mp4Controllers.controller('taskDetailController', ['$scope', '$http', '$window' 
                 });
             },1000)
         }
+        
+        
+        
+        
         
 }]);
 
