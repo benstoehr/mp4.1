@@ -51,9 +51,9 @@
             <h5 class="etText">Deadline: {{deadline}}</h5>
             <button class="etButton" ng-click="editDeadline()">Edit Deadline</button>
             <div class="validbox" ng-show="showEditDeadline">
-                <datepicker class="inline">
-                    <input ng-model="nuDeadline" type="text"/>
-                </datepicker>
+                
+                <input ng-model="nuDeadline" type="date"/>
+                
                 <h4 ng-show="emptyDeadline">CANNOT BE EMPTY</h4>
                 <button class="submitButton" ng-click="changeDeadline()">Submit Edit</button>
             </div>   
