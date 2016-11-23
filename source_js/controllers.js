@@ -138,7 +138,9 @@ mp4Controllers.controller('addUserController', ['$scope', '$http', '$window', 'C
         // CLEAR THE INPUT FORMS
         $scope.name="";
         $scope.email="";
-    }  
+    } 
+    
+    
 
 }]);
 
@@ -305,8 +307,28 @@ mp4Controllers.controller('TaskController', ['$scope', '$window', 'CommonData' ,
 mp4Controllers.controller('addTaskController', ['$scope', '$http', '$window','$routeParams', 'CommonData', function($scope, $http, $window, $routeParams, CommonData){
     
     $scope.taskname = "";
-    $scope.description = "";
+    $scope.nameEmpty = "";
+    $scope.$watch('taskname',function(){
+        if($scope.taskname === ""){
+            $scope.nameEmpty = true;
+        }else{
+            $scope.nameEmpty = false;
+        }
+    })
+        
+
+    
     $scope.deadline = "";
+    $scope.deadlineEmpty = "";
+    $scope.$watch('deadline',function(){
+        if($scope.deadline === ""){
+            $scope.deadlineEmpty = true;
+        }else{
+            $scope.deadlineEmpty = false;
+        }
+    })
+    
+    $scope.description = "";
     $scope.username = "";
     
     $scope.showNewTaskDetails = false;
@@ -389,8 +411,25 @@ mp4Controllers.controller('addTaskController', ['$scope', '$http', '$window','$r
     }
     
 
+        $scope.userList = "";
+        $scope.showDroptions = false;
+        
+        $scope.showDropdown = function(){
+            $scope.showDroptions = !($scope.showDroptions);
+        }
+        
+        CommonData.getUsers(function(data){
+            $scope.userList = data;
+        })
+        
+        $scope.changeUser = function(userName){
+            $scope.username = userName;
+            $scope.showDroptions = false;
+        }
     
-    
+
+        
+        
     
     
 }]);
@@ -460,11 +499,11 @@ mp4Controllers.controller('taskDetailController', ['$scope', '$http', '$window' 
         })
 
         // BITCH ONE
-        $scope.changeUser = function(){
+        $scope.changeUser = function(userName){
             
             $scope.showEditUser = false;
             var currentUser = $scope.assignedUserName;
-            var newUser = $scope.nuAssignedUserName;
+            var newUser = userName;
             var newUserID = "";
             
             //CommonData.unassignTask($routeParams.id);
@@ -574,6 +613,17 @@ mp4Controllers.controller('taskDetailController', ['$scope', '$http', '$window' 
             },1000)
         }
         
+        
+        $scope.userList = "";
+        $scope.showDroptions = false;
+        
+        $scope.showDropdown = function(){
+            $scope.showDroptions = !($scope.showDroptions);
+        }
+        
+        CommonData.getUsers(function(data){
+            $scope.userList = data;
+        })
         
         
         

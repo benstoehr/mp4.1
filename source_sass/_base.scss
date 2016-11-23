@@ -46,6 +46,7 @@
     min-height: 300px;
     margin: 5px auto;
     background-color: gray;
+    padding:20px;
 }
 
 .addUserForm{
@@ -87,6 +88,9 @@
     background-color: whitesmoke;
 }
 
+.inline{
+    display: inline;
+}
 .green{
     background-color: greenyellow;
 }

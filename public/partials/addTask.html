@@ -11,12 +11,28 @@
         
         
         <div class="addTaskForm">
-            <div class="validbox">Task Name<br><input ng-model="taskname" placeholder="Task Name"></div>
-            <div class="validbox">Description<br><input ng-model="description" placeholder="Description"></div>
-            <div class="validbox">Deadline<br><input ng-model="deadline" placeholder="MM/DD/YYYY HH:MM AM/PM"></div>
-            <div class="validbox">Assigned User<br><input ng-model="username" placeholder="User Name"></div>
+            <div class="validbox">Task Name<br>
+                <input class="inline" ng-model="taskname" placeholder="Task Name">
+                <h5 class="inline" ng-show="nameEmpty">Cannot Be Empty</h5>
+            </div>
+            <div class="validbox">Description<br>
+                <input ng-model="description" placeholder="Description">
+            </div>
+            <div class="validbox">Deadline<br>
+                <input class="inline" ng-model="deadline" placeholder="MM/DD/YYYY HH:MM AM/PM">
+                <h5 class="inline" ng-show="deadlineEmpty">Cannot Be Empty</h5>
+            </div>
+            <div class="validbox">Assigned User: {{username}}<br>   
+                <div class="dropdown-head inline" ng-click="showDropdown()">Choose New User</div>
+                <table class="dropdown-body" ng-show="showDroptions">
+                    <tr ng-repeat="user in userList">
+                        <td ng-click="changeUser(user.name)">{{user.name}}</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
             <button class="submitButton" ng-click="addNewTask()">Submit</button>
-        </div>
+        
         
         <div ng-show="showNewTaskDetails">
         
@@ -29,7 +45,8 @@
             <h5>Deadline: {{nuDeadline}}</h5>
             
         </div>
-        
+    </div>      
+
         
     </div>
     

@@ -29,9 +29,20 @@
         
         <div class=taskDetails>
             <h5 class="etText">Assigned User: <a href="#/users/{{assignedUser}}">{{assignedUserName}}</a></h5>
+            
+            
             <button class="etButton" ng-click="editUser()">Edit User</button>
+            
             <div class="validbox" ng-show="showEditUser">
-                <input ng-model="nuAssignedUserName" placeholder="New User">
+                <input ng-model="nuAssignedUserName" placeholder="Submit to Unassign Task">
+                
+                <div class="dropdown-head" ng-click="showDropdown()">Choose New User</div>
+                <table class="dropdown-body" ng-show="showDroptions">
+                    <tr ng-repeat="user in userList">
+                        <td ng-click="changeUser(user.name)">{{user.name}}</td>
+                    </tr>
+                </table>
+                
                 <button class="submitButton" ng-click="changeUser()">Submit Edit</button>
             </div>
         </div>    
