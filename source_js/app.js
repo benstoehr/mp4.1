@@ -1,6 +1,6 @@
 //var http = require('http');
 
-var app = angular.module('mp4', ['720kb.datepicker','ngRoute', 'mp4Controllers', 'mp4Services']);
+var app = angular.module('mp4', ['ngRoute', 'mp4Controllers', 'mp4Services']);
 
 
 app.config(['$routeProvider', function($routeProvider) {
